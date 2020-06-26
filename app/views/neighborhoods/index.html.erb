@@ -1,0 +1,8 @@
+<%= content_tag(:h3, "Neighborhoods") %>
+
+<% @neighborhoods.each {|neighborhood| %>
+    <%= link_to neighborhood.name, neighborhood_path(neighborhood)%> <br>
+<%}%>
+<br>
+
+<%= button_to "Create Neighborhood", {action: "new"}, :method => :get%>

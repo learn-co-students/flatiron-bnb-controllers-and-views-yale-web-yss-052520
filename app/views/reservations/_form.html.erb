@@ -1,0 +1,12 @@
+<%= render 'layouts/flash'%>
+<%= form_for @reservation do |f|%>
+    <%= f.label :check_in%>
+    <%= f.text_field :check_in, value: "YYYY-MM-DD"%> <br>
+    <%= f.label :check_out%>
+    <%= f.text_field :check_out, value: "YYYY-MM-DD"%> <br>
+    <%= f.label :listing_id%>
+    <%= f.collection_select :listing_id, @listings, :id, :address%> <br>
+    <%= f.label :guest_id%>
+    <%= f.collection_select :guest_id, @guests, :id, :name%>
+    <%= f.submit %>
+<%end%>

@@ -1,0 +1,8 @@
+<% if flash[:errors]%>
+    <ul>
+    <%flash[:errors].each {|e|%>
+
+        <%= content_tag(:li, e, style: "color:red") %>
+    <%}%>
+    </ul>
+<%end%>

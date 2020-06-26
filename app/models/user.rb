@@ -11,4 +11,11 @@ class User < ActiveRecord::Base
   ## As a host
   has_many :guests, :through => :reservations, :class_name => "User"
   has_many :host_reviews, :through => :listings, :source => :reviews
+
+  validates :name, presence: true
+  validates :name, uniqueness: true
+
+  def self.hosts()
+    User.all.where(is_host: true)
+  end
 end

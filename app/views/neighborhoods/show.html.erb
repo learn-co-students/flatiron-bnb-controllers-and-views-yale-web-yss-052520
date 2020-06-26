@@ -1,0 +1,11 @@
+<%= content_tag(:h1, @neighborhood.name) %>
+<%= content_tag(:h2, "Listings") %>
+
+<ul>
+    <%@neighborhood.listings.each {|l|%>
+       <%= content_tag(:li, link_to("#{l.listing_type.titleize} at #{l.address}" , listing_path(l))) %>
+    <%}%>
+</ul>
+
+<%= button_to "Edit Neighborhood", {action: "edit"}, method: :get %>
+<%= button_to "Delete Neighborhood", {id: @neighborhood.id}, method: :delete %>

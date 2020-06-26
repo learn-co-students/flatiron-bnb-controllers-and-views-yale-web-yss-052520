@@ -1,0 +1,8 @@
+<%= content_tag(:h3, "Users") %>
+
+<% @users.each {|user| %>
+    <%= link_to user.name, user_path(user)%> <br>
+<%}%>
+<br>
+
+<%= button_to "Create User", {action: "new"}, :method => :get%>
