@@ -1,0 +1,36 @@
+<%= content_tag(:h1, @user.name) %>
+
+<%= content_tag(:h2, "#{@user.name}'s Host Info")%>
+    <ul>
+    <li>
+        <%= content_tag(:h3, "Listings")%>
+            <ol>
+                <% @user.listings.each{|l|%>
+                    <%= content_tag(:li, link_to(l.address,  listing_path(l)))%>
+                <%}%>
+            </ol>
+    </li>
+    <li>
+        <%= content_tag(:h3, "Average Rating Received: #{@user.host_reviews.average(:rating)}")%>
+    </li>
+    </ul>
+
+<%= content_tag(:h2, "#{@user.name}'s Guest Info")%>
+    <ul>
+    <li>
+        <%= content_tag(:h3, "Visted Locations:")%>
+        <ol>
+                <%= "Hasn't traveled anywhere" if @user.trip_listings.empty?%>
+                <% @user.trip_listings.each{|t|%>
+                    <%= content_tag(:li, link_to(t.address,  listing_path(t)))%>
+                <%}%>
+        </ol>
+    </li>
+    <li><%= content_tag(:h3, "Average Rating Given: #{@user.reviews.average(:rating)}")%> </li>
+    <ul>
+
+<%= button_to "Edit User", {action: "edit"}, method: :get %>
+<%= button_to "Delete User", {id: @user.id}, method: :delete %>
+    
+
+    

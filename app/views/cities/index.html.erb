@@ -1,0 +1,8 @@
+<%= content_tag(:h3, "Cities") %>
+
+<% @cities.each {|city| %>
+    <%= link_to city.name, city_path(city)%> <br>
+<%}%>
+<br>
+
+<%= button_to "Create City", {action: "new"}, :method => :get%>

@@ -19,6 +19,13 @@ class Listing < ActiveRecord::Base
     reviews.average(:rating)
   end
 
+  def self.valid_column_names()
+    rejected_col = ['id', "host_id","neighborhood_id", "updated_at", "created_at"]
+    self.columns.map(&:name).reject{|col|
+      rejected_col.include?(col)
+    }
+  end
+
   private
 
   def self.available(start_date, end_date)

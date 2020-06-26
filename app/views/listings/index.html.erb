@@ -1,0 +1,9 @@
+<%= content_tag(:h1, "Listings") %>
+
+<% @listings.each {|listing| %>
+    <%= link_to "#{listing.listing_type.titlecase} at #{listing.address}", 
+        listing_path(listing)%> <br>
+<%}%>
+<br>
+
+<%= button_to "Create Listing", {action: "new"}, :method => :get%>

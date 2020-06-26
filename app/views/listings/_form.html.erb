@@ -1,0 +1,13 @@
+<%= render '/layouts/flash'%>
+
+<%= form_for @listing do |f|%>
+    <% Listing.valid_column_names.each {|col|%>
+        <%= f.label col.to_sym%>
+        <%= f.text_field col.to_sym%> <br>
+    <%}%>
+    <%= f.label :neighborhood_id%>
+    <%= f.collection_select :neighborhood_id, @neighborhoods, :id, :name%><br>
+    <%= f.label :host_id%> 
+    <%= f.collection_select :host_id, @hosts, :id, :name%> <br>
+    <%= f.submit%>
+<%end%>

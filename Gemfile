@@ -7,6 +7,7 @@ gem 'sass-rails'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier', '>= 1.3.0'
 gem 'bootsnap'
+gem 'awesome_print'
 
 group :development, :test do
   gem 'rack_session_access'

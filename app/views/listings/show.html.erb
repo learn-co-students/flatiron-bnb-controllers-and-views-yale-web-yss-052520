@@ -1,0 +1,24 @@
+<%= content_tag(:h1, @listing.title) %>
+<% @cols.each {|col|%>
+    <%= "#{col.titleize()}: #{@listing.method(col.to_sym).call}"%><br>
+<%}%>
+<%= content_tag(:h2, "Neighborhood")%>
+<%= link_to @listing.neighborhood.name, listing_path(@listing.neighborhood)%> <br>
+<%= content_tag(:h2, "Host")%>
+<%= link_to @listing.host.name, user_path(@listing.host)%> <br>
+<br>
+<%= button_to "Edit Listing", {action: "edit"}, method: :get %>
+<%= button_to "Delete Listing", {id: @listing.id}, method: :delete %>
+<br>
+<%= content_tag(:h2, "Reviews:") %>
+<ol>
+    <% @listing.reviews.each do |review|%>
+        <%= content_tag(:li, link_to(review.guest.name, user_path(review.guest)))%>
+        <ul>
+            <%= content_tag(:li, "Rating: #{review.rating}")%>
+            <%= content_tag(:li, "Review: #{review.description}")%>
+        </ul>
+    <%end%>
+</ol>
+<%= content_tag(:h2, "Reserved on the following dates:") %>
+<%= button_to "Make a Reservation", {:controller => "reservations", :action => "new", :listing_id => @listing.id} , method: :get %>

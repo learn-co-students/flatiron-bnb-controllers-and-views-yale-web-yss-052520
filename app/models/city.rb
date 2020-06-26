@@ -3,6 +3,7 @@ class City < ActiveRecord::Base
   has_many :listings, :through => :neighborhoods
   has_many :reservations, :through => :listings
 
+  validates :name, uniqueness: true
   include Reservable
 
   def city_openings(start_date, end_date)
